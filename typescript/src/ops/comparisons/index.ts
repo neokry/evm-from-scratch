@@ -1,0 +1,9 @@
+export { LT } from "./LT";
+export { GT } from "./GT";
+export { SLT } from "./SLT";
+export { SGT } from "./SGT";
+export { EQ } from "./EQ";
+export { ISZERO } from "./ISZERO";
+export { NOT } from "./NOT";
+export { AND } from "./AND";
+export { XOR } from "./XOR";

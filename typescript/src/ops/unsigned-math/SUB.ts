@@ -1,4 +1,4 @@
-import { UINT256_MAX } from "../constants/evm";
+import { UINT256_MAX } from "../../constants/evm";
 
 export const SUB = (stack: bigint[]) => {
   const a = stack.pop();

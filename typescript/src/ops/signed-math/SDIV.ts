@@ -1,6 +1,6 @@
-import { UINT256_MAX, UINT256_MAX_BIT_LENGTH } from "../constants/evm";
+import { UINT256_MAX, UINT256_MAX_BIT_LENGTH } from "../../constants/evm";
 
-export const SMOD = (stack: bigint[]) => {
+export const SDIV = (stack: bigint[]) => {
   const a = stack.pop();
   const b = stack.pop();
 
@@ -11,22 +11,22 @@ export const SMOD = (stack: bigint[]) => {
   const negB = (b >> shiftCount) & BigInt(0x1);
 
   //Both positive
-  if (!negA && !negB) return stack.push(a % b);
+  if (!negA && !negB) return stack.push(a / b);
 
   //Both negative
   if (negA && negB) {
     const posA = UINT256_MAX - a;
     const posB = UINT256_MAX - b;
-    return stack.push(UINT256_MAX - (posA % posB));
+    return stack.push(posA / posB);
   }
 
   if (negA) {
     const posA = UINT256_MAX - a;
-    return stack.push(UINT256_MAX - (posA % b));
+    return stack.push(UINT256_MAX - posA / b);
   }
 
   if (negB) {
     const posB = UINT256_MAX - b;
-    return stack.push(UINT256_MAX - (a % posB));
+    return stack.push(UINT256_MAX - a / posB);
   }
 };

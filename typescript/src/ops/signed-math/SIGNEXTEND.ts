@@ -1,4 +1,4 @@
-import { UINT256_MAX } from "../constants/evm";
+import { UINT256_MAX } from "../../constants/evm";
 
 export const SIGNEXTEND = (stack: any[]) => {
   const byteNum = stack.pop();

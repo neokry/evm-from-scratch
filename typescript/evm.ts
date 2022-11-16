@@ -17,15 +17,25 @@ import {
   ADDMOD,
   DIV,
   EXP,
+  GT,
+  LT,
   MOD,
   MUL,
   MULMOD,
   PUSHN,
   SDIV,
+  SGT,
   SIGNEXTEND,
+  SLT,
   SMOD,
   SUB,
+  EQ,
+  ISZERO,
+  NOT,
+  AND,
+  XOR,
 } from "./src/ops";
+import { OR } from "./src/ops/comparisons/OR";
 
 let pc = 0;
 
@@ -52,6 +62,18 @@ const ExecOp = (stack: bigint[], code: Uint8Array) => {
   if (opcode == 11) SIGNEXTEND(stack);
   if (opcode == 5) SDIV(stack);
   if (opcode == 7) SMOD(stack);
+
+  //Comparisons
+  if (opcode == 16) LT(stack);
+  if (opcode == 17) GT(stack);
+  if (opcode == 18) SLT(stack);
+  if (opcode == 19) SGT(stack);
+  if (opcode == 20) EQ(stack);
+  if (opcode == 21) ISZERO(stack);
+  if (opcode == 25) NOT(stack);
+  if (opcode == 22) AND(stack);
+  if (opcode == 23) OR(stack);
+  if (opcode == 24) XOR(stack);
 
   //POP
   if (opcode == 80) stack.pop();
