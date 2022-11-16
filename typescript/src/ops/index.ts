@@ -7,4 +7,7 @@ export { DIV } from "./DIV";
 export { MOD } from "./MOD";
 export { MULMOD } from "./MULMOD";
 export { EXP } from "./EXP";
+
 export { SIGNEXTEND } from "./SIGNEXTEND";
+export { SDIV } from "./SDIV";
+export { SMOD } from "./SMOD";

@@ -1,11 +1,11 @@
-import { BYTE_SIZE, UINT256_MAX } from "../constants/evm";
+import { UINT256_MAX } from "../constants/evm";
 
 export const SIGNEXTEND = (stack: any[]) => {
   const byteNum = stack.pop();
   const val = stack.pop();
 
-  const sig = val >> BigInt(7);
-  if (!sig) return stack.push(val);
+  const neg = val >> BigInt(7);
+  if (!neg) return stack.push(val);
 
   const extended = UINT256_MAX - (byteNum + BigInt(1));
   stack.push(extended);

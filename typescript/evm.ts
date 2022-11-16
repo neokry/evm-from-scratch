@@ -21,7 +21,9 @@ import {
   MUL,
   MULMOD,
   PUSHN,
+  SDIV,
   SIGNEXTEND,
+  SMOD,
   SUB,
 } from "./src/ops";
 
@@ -36,7 +38,7 @@ const ExecOp = (stack: bigint[], code: Uint8Array) => {
   //STOP
   if (opcode == 0) return -1;
 
-  //Arithmatic
+  //Unsigned Math
   if (opcode == 1) ADD(stack);
   if (opcode == 2) MUL(stack);
   if (opcode == 3) SUB(stack);
@@ -45,7 +47,11 @@ const ExecOp = (stack: bigint[], code: Uint8Array) => {
   if (opcode == 8) ADDMOD(stack);
   if (opcode == 9) MULMOD(stack);
   if (opcode == 10) EXP(stack);
+
+  //Signed Math
   if (opcode == 11) SIGNEXTEND(stack);
+  if (opcode == 5) SDIV(stack);
+  if (opcode == 7) SMOD(stack);
 
   //POP
   if (opcode == 80) stack.pop();
